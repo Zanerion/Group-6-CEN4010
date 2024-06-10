@@ -9,10 +9,10 @@ import org.springframework.stereotype.Indexed;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer bookId;
-
-    private String bookName;
+    private String title;
+    private String isbnNumber;
+    
 
     public Integer getBookId() {
         return bookId;
@@ -22,11 +22,11 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String gettitle() {
+        return title;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void settitle(String title) {
+        this.title = title;
     }
 }

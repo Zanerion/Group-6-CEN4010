@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
+
 @RequestMapping(path="/demo")
 public class MainController {
     
     @Autowired
     private BookRepository bookRepository;
 
-    @PostMapping(path="/demo")
-    public @ResponseBody String addNewBook (@RequestParam String bookName) {
+    @PostMapping(path="/addNewBook")
+    public @ResponseBody String addNewBook (@RequestParam String title) {
         Book b = new Book();
-        b.setBookName(bookName);
+        b.settitle(title);
         bookRepository.save(b);
         return "Saved";
     }
