@@ -1,5 +1,7 @@
 package com.group6.bookstore_project.Model;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class User {
 
     @Column
     private String address;
+
 
     public long getId() {
         return id;
@@ -83,6 +86,7 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
 
     
 }
