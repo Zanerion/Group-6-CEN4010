@@ -35,3 +35,12 @@ public List<Book> getTopSellers() {
 public List<Book> getBooksByRating(double rating) {
     return bookRepository.findByRatingGreaterThanEqual(rating);
 }
+
+public void discountBooksByPublisher(String publisher, double discountPercent) {
+    List<Book> books = bookRepository.findByPublisher(publisher);
+    for (Book book : books) {
+        double newPrice = book.getPrice() * (1 - discountPercent / 100);
+        book.setPrice(newPrice);
+        bookRepository.save(book);
+    }
+}
