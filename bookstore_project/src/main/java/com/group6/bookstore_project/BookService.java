@@ -31,3 +31,7 @@ public List<Book> getBooksByGenre(String genre) {
 public List<Book> getTopSellers() {
     return bookRepository.findTop10ByOrderByCopiesSoldDesc();
 }
+
+public List<Book> getBooksByRating(double rating) {
+    return bookRepository.findByRatingGreaterThanEqual(rating);
+}
