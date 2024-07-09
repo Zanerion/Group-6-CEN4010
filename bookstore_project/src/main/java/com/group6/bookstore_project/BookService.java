@@ -8,20 +8,18 @@ import java.util.List;
 
 @Service
 public class BookService {
-    private final BookRepository bookRepository;
+    @Autowired
+    private BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public Book createBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Book getBookByIsbn(String isbn) {
+        return bookRepository.findByIsbn(isbn);
     }
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
-
-    public List<Book> getAllBooksSortedByTitle() {
-        List<Book> books = bookRepository.findAll();
-        books.sort((b1, b2) -> b1.getTitle().compareToIgnoreCase(b2.getTitle()));
-        return books;
-    }
 }
-
