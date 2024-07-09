@@ -72,3 +72,8 @@ public List<Book> getTopSellers() {
     return bookService.getTopSellers();
 }
 
+@GetMapping("/books/rating/{rating}")
+public List<Book> getBooksByRating(@PathVariable double rating) {
+    return bookService.getBooksByRating(rating);
+}
+
