@@ -27,3 +27,7 @@ public class BookService {
 public List<Book> getBooksByGenre(String genre) {
     return bookRepository.findByGenre(genre);
 }
+
+public List<Book> getTopSellers() {
+    return bookRepository.findTop10ByOrderByCopiesSoldDesc();
+}
