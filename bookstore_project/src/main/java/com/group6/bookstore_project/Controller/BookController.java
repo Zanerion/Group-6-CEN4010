@@ -77,3 +77,7 @@ public List<Book> getBooksByRating(@PathVariable double rating) {
     return bookService.getBooksByRating(rating);
 }
 
+@PutMapping("/books/discount")
+public void discountBooksByPublisher(@RequestParam String publisher, @RequestParam double discountPercent) {
+    bookService.discountBooksByPublisher(publisher, discountPercent);
+}
