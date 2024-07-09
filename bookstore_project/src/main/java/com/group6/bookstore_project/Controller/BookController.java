@@ -61,3 +61,8 @@ public class BookController {
         return sb.toString();
     }
 }
+
+@GetMapping("/books/genre/{genre}")
+public List<Book> getBooksByGenre(@PathVariable String genre) {
+    return bookService.getBooksByGenre(genre);
+}
