@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,13 +15,15 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookID;
-    private String author;
+    private String isbn;
     private String title;
-    private int pages;
-    private String genre;
-    private int copiesSold;
-    private double price;
     private String bookDesc;
+    private double price;
+    private String genre;
     private String publisher;
     private java.sql.Date publicationDate;
+    private int copiesSold;
+
+    @ManyToOne
+    private Author author;
 }
