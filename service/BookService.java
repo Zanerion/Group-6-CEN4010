@@ -1,9 +1,10 @@
-package com.group6.bookstore_project.service;
+package com.brandon.bookSearch.Service;
 
-import com.group6.bookstore_project.Repository.BookRepository;
-import com.group6.bookstore_project.Model.Book;
+import com.brandon.bookSearch.Repository.BookRepository;
+import com.brandon.bookSearch.Entity.Book;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,5 +24,23 @@ public class BookService {
         books.sort((b1, b2) -> b1.getTitle().compareToIgnoreCase(b2.getTitle()));
         return books;
     }
-}
 
+    public List<Book> getBooksByGenre(String genre) {
+        return bookRepository.findByGenre(genre);
+    }
+    public List<Book> getTopSellers() {
+        return bookRepository.findTop10ByCopiesSold();
+    }
+    public List<Book> getBooksByRating(double rating) {
+        return bookRepository.findByRatingGreaterThanEqual(rating);
+    }
+    public void applyDiscountByPublisher(String publisher, double discountPercentage) {
+        List<Book> books = bookRepository.findByPublisher(publisher);
+        for (Book book : books) {
+            BigDecimal discount = book.getPrice().multiply(BigDecimal.valueOf(discountPercentage / 100));
+            BigDecimal newPrice = book.getPrice().subtract(discount);
+            book.setPrice(newPrice);
+        }
+        bookRepository.saveAll(books);
+    }
+}
