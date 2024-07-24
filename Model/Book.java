@@ -1,11 +1,11 @@
-package com.group6.bookstore_project.Model;
+package com.brandon.bookSearch.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Setter
 @Getter
@@ -18,9 +18,19 @@ public class Book {
     private String title;
     private int pages;
     private String genre;
-    private int copiesSold;
-    private double price;
+
+
+    @Column(name = "copies_sold")
+    private BigInteger copiesSold;
+
+    private BigDecimal price;
+    @Column(name = "book_desc")
     private String bookDesc;
+
     private String publisher;
-    private java.sql.Date publicationDate;
+
+    @Column(name = "publication_date")
+    private String publicationDate;
+
+    private double rating;
 }
